@@ -1,0 +1,9 @@
+{
+  "name": "nw-first",
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "nightwatch": "^0.9.16",
+    "selenium-webdriver": "^3.6.0"
+  }
+}
