@@ -2,10 +2,12 @@ module.exports = {
   'Login test': function (client) {
     client
       .url('https://yandex.by/')
-      .setValue('input[name="email"]', 'foo@bar.com')
-      .setValue('input[name="password]', 'p455w0rdZ')
+      .pause(3000)
+      .setValue('input[name="login"]', 'dimaira2012@yandex.by')
+      .setValue('input[name="passwd"]', '110506')
       .click('button[type="submit"]')
-      .assert.containsText('main', 'News feed')
+      .pause(5000)
+      .assert.containsText('.b-mail-pager__label', 'Письма по месяцам')
       .end();
   }
 };
