@@ -3,20 +3,19 @@ module.exports = {
     client
       .url('https://yandex.by/')
       .pause(2000)
-      .setValue('input[name="login"]', 'dimaira2012@yandex.by')
-      .setValue('input[name="passwd"]', '110506')
+      .setValue('input[name="login"]', 'dzmitriy-melnikov@yandex.ru')
+      .setValue('input[name="passwd"]', '110506Vlad')
       .click('button[type="submit"]')
       .pause(2000)
       .click('.mail-ComposeButton-Text')
       .pause(2000)
-      .setValue('div[name="to"]', 'dimaira2012@yandex.by')
+      .setValue('div[name="to"]', 'dzmitriy-melnikov@yandex.ru')
       .pause(2000)
-      //.click('textarea')
-      //.setValue('textarea', 'Hello my send email myself')
-      //.pause(4000)
-      //.assert.containsText('.b-mail-pager__label', 'Письма по месяцам')
       .click('button[type="submit"]')
-      .pause(4000)
+      .pause(5000)
+      .click('a[href="#inbox"]')
+      .pause(5000)
+      .assert.containsText('span.mail-MessageSnippet-FromText', 'Дмитрий Мельников')
       .end();
   }
 };
