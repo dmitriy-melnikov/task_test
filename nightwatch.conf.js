@@ -3,7 +3,7 @@ const CROMEDRIVER = require('chromedriver').path;
 const GECKODRIVER = require('geckodriver').path;
 
 module.exports = {
-  src_folders: ["tests", "examples"],
+  src_folders: ["tests"],
   output_folder: "reports",
   custom_commands_path: "",
   page_objects_path: "",
@@ -13,6 +13,13 @@ module.exports = {
   parallel_process_delay: 10,
   disable_colors: false,
   test_workers: false,
+  test_runner: {
+    type: "mocha",
+    options: {
+      ui: "bdd",
+      reporter: "list"
+    }
+  },
   retry_assertion_timeout: 2000,
 
   selenium: {
@@ -28,6 +35,15 @@ module.exports = {
   },
 
   test_settings: {
+    mocha_tests: {
+      test_runner: {
+        type: "mocha",
+        options: {
+          ui: "tdd",
+          reporter: "list"
+        }
+      }
+    },
     default: {
       launch_url: "http://localhost",
       selenium_host: "127.0.0.1",
@@ -44,6 +60,7 @@ module.exports = {
         acceptSslCerts: true
       }
     },
+
     chrome: {
       desiredCapabilities: {
         browserName: "chrome",
