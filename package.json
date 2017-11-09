@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "test": "./node_modules/.bin/nightwatch -c ./nightwatch.conf.js --env chrome"
+    "test": "nightwatch -c ./nightwatch.conf.js --env chrome"
   },
   "dependencies": {
     "nightwatch": "^0.9.16",

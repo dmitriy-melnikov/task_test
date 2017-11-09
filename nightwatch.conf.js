@@ -29,8 +29,8 @@ module.exports = {
     host: "127.0.0.1",
     port: 4444,
     cli_args: {
-      webdriver_chrome_driver: CROMEDRIVER,
-      webdriver_firefox_profile: GECKODRIVER
+      'webdriver.chrome.driver': CROMEDRIVER,
+      'webdriver.firefox.profile': GECKODRIVER
     }
   },
 
