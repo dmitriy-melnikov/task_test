@@ -6,7 +6,7 @@ module.exports = {
   src_folders: ["tests"],
   output_folder: "reports",
   custom_commands_path: "",
-  page_objects_path: "",
+  page_objects_path: "pages",
   custom_assertions_path: "",
   globals_path: "",
   live_output: true,
@@ -29,8 +29,8 @@ module.exports = {
     host: "127.0.0.1",
     port: 4444,
     cli_args: {
-      'webdriver.chrome.driver': CROMEDRIVER,
-      'webdriver.firefox.profile': GECKODRIVER
+      'webdriver.firefox.profile': GECKODRIVER,
+      'webdriver.chrome.driver': CROMEDRIVER
     }
   },
 
@@ -55,7 +55,7 @@ module.exports = {
         path: ""
       },
       desiredCapabilities: {
-        browserName: "firefox",
+        browserName: "chrome",
         javascriptEnabled: true,
         acceptSslCerts: true
       }
