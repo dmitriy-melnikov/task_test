@@ -1,6 +1,6 @@
 describe('Login test', function () {
 
-    it('run login test', function (client) {
+    xit('run login test', function (client) {
         const post = client.page.post();
         post.navigate()
             .submit();

@@ -1,6 +1,8 @@
 const JAR = require('selenium-server-standalone-jar').path;
 const CROMEDRIVER = require('chromedriver').path;
 const GECKODRIVER = require('geckodriver').path;
+/*const urlPaths = require('/variables/url');
+const xPathSelectors = require('/variables/xpathSelectors');*/
 
 module.exports = {
   src_folders: ["tests"],
@@ -46,13 +48,19 @@ module.exports = {
     },
     default: {
       launch_url: "http://localhost",
+      globals : {
+        /*myGlobalVar: urlPaths,
+        otherGlobal: xPathSelectors*/
+      },
       selenium_host: "127.0.0.1",
       selenium_port: 4444,
       silent: true,
       disable_colors: false,
       screenshots: {
-        enabled: false,
-        path: ""
+        enabled: true,
+        path: "./screenshots",
+        on_failure: true,
+        on_error: false
       },
       desiredCapabilities: {
         browserName: "chrome",

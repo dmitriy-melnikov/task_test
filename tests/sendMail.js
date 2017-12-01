@@ -1,6 +1,6 @@
 describe('Send mail test', function () {
 
-    it('run test for send mail', function (client) {
+    xit('run test for send mail', function (client) {
         const mail = client.page.sendMail();
         mail.navigate()
             .waitForElementVisible('@body', 2000);
