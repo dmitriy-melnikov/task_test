@@ -1,10 +1,25 @@
 module.exports = {
     url: 'https://vk.com/',
     elements: {
-       emailField: '#index_email',
-       passField: '#index_pass',
-       btnLogin: '#index_login_button',
-       postBox: '#submit_post_box',
-       labelField:'.left_label.inl_bl'
+       emailField: {
+         selector: '//form/input[@id="index_email"]',
+         locateStrategy: 'xpath'
+       },
+       passField: {
+         selector: '//form/input[@id="index_pass"]',
+         locateStrategy: 'xpath'
+       },
+       btnLogin: {
+         selector: '//form/button[@id="index_login_button"]',
+         locateStrategy: 'xpath'
+       },
+       postBox: {
+         selector: "//div[@id='post_field']",
+         locateStrategy: 'xpath'
+       },
+       searchField: {
+         selector: "//div[@class='ph_content']",
+         locateStrategy: 'xpath'
+       },
     }
 };
