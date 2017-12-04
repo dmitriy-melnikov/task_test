@@ -15,13 +15,25 @@ describe('tests for flights', () => {
       .waitForElementVisible('@popupFrom', 3000)
       .waitForElementVisible('@clickAirport', 3000)
       .click('@clickAirport')
-      .waitForElementVisible('@flyFrom', 3000)
-      //.expect.element('@flyFrom').text.to.contain('Heathrow')
+      .waitForElementVisible('@flyFrom', 2000)
+      //expect.element('@flyTo').to.have.value.which.contains('Heathrow')
       .click('@flyTo')
       .setValue('@flyTo', 'Dublin')
-      .waitForElementVisible('@popupTo', 3000)
-    .expect.element('@flyFrom').text.to.contain('Dublin Airport (DUB), Ireland')
-
+      //.waitForElementVisible('@popupTo', 3000)
+      //.expect.element('@clickCity').text.to.contain('Dublin, Ireland (DUB)')
+      .waitForElementVisible('@clickCity', 3000)
+      .click('@clickCity')
+      //.expect.element('@flyTo').to.have.value.which.contains
+      .click('@flyDeparting')
+      .waitForElementVisible('@dateDeparting', 3000)
+      .click('@dateDeparting')
+      .click('@flyReturning')
+      //.waitForElementVisible('@dateReturning', 3000)
+      .click('@adult')
+      .waitForElementVisible('@adultNumber', 3000)
+      .click('@adultNumber')
+      .click('@searchBtn')
+      .waitForElementVisible('@resultPage', 10000)
   });
 
   after((fly, done) => {
