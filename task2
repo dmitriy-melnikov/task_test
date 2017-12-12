@@ -19,7 +19,7 @@
 </div>
 
 5.
-
+//selector: '//div[@class="autocomplete-dropdown"]//li[2]//a[1]//div',
 1. Go to site http://www.expedia.com
 2. Select "Flights"
 3. Type London in "Fly from: city or airport"

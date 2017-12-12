@@ -22,7 +22,6 @@ module.exports = {
     }
   },
   retry_assertion_timeout: 2000,
-
   selenium: {
     start_process: true,
     server_path: JAR,
@@ -58,6 +57,7 @@ module.exports = {
         on_failure: true,
         on_error: true
       },
+      use_xpath: true,
       desiredCapabilities: {
         browserName: "firefox",
         javascriptEnabled: true,
