@@ -8,13 +8,15 @@ describe('tests for flights', () => {
     const fly = client.page.expedia();
     fly
       .enterSite()
-      .searchFlights('London')
-      .flyFromAirport('Dublin')
-      .searchDate()
+      .searchFlightsFrom('London')
+      .flyFromAirport('Heathrow')
+      .searchFlightsTo('Dublin')
+      .flyToAirport('Dublin, Ireland(DUB)')
+      .searchDate(17, 24)
       .setAdult()
       .searchResult();
     fly
-      .assert.containsText('@resultCoast', '$131')
+      .assert.containsText('@resultCoast', '$242')
       .assert.visible('@airLinesIncluded')
       .expect.element('@resultCoast').text.to.not.equal('$1')
   });

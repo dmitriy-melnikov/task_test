@@ -2,15 +2,15 @@ const enterSite = {
     enterSite: function() {
         this
             .navigate()
-            .waitForElementVisible('@btnFlights', 7000);
+            .waitForElementVisible('@btnFlights', 7000)
+            .click('@btnFlights');
         return this;
     }
 };
 
-const searchFlights = {
-    searchFlights: function (flyFrom) {
+const searchFlightsFrom = {
+    searchFlightsFrom: function (flyFrom) {
         this
-            .click('@btnFlights')
             .waitForElementVisible('@flyFrom', 3000)
             .click('@flyFrom')
             .setValue('@flyFrom', flyFrom);
@@ -19,27 +19,39 @@ const searchFlights = {
 };
 
 const flyFromAirport = {
-    flyFromAirport: function (flyTo) {
+    flyFromAirport: function (airport) {
       this
           .waitForElementVisible('@popupFrom', 3000)
-          .waitForElementVisible('@airportSelect', 3000)
-          .click('@airportSelect')
-          .waitForElementVisible('@flyFrom', 2000)
-          .click('@flyTo')
-          .setValue('@flyTo', flyTo)
-          .waitForElementVisible('@citySelect', 3000)
-          .click('@citySelect');
+          .waitForElementVisible('//div[@class="display-group-results"]//div[contains(., ' + '"'+ airport + '"' + ')]', 3000)
+          .click('//div[@class="display-group-results"]//div[contains(., ' + '"'+ airport + '"' + ')]');
         return this;
   }
 };
-
+const searchFlightsTo = {
+    searchFlightsTo: function (flyTo) {
+        this
+            .click('@flyTo')
+            .setValue('@flyTo', flyTo);
+        return this;
+    }
+};
+const flyToAirport = {
+    flyToAirport: function (airport) {
+        this
+            .waitForElementVisible('//div[@class="display-group-results"]//div[contains(., ' + '"'+ airport + '"' + ')]', 3000)
+            .click('//div[@class="display-group-results"]//div[contains(., ' + '"'+ airport + '"' + ')]');
+        return this;
+    }
+};
 const searchDate = {
-  searchDate: function () {
+  searchDate: function (dayDepart, dayReturn) {
     this
         .click('@flyDeparting')
-        .waitForElementVisible('@dateDeparting', 3000)
-        .click('@dateDeparting')
-        .click('@flyReturning');
+        .waitForElementVisible('//div[@class="datepicker-cal-month"][1]', 3000)
+        .click('//div[@class="datepicker-cal-month"][1]//button[contains(., ' + '"'+ dayDepart + '"' + ')]')
+        .click('@flyReturning')
+        .waitForElementVisible('//div[@class="datepicker-cal-month"][1]', 3000)
+        .click('//div[@class="datepicker-cal-month"][1]//button[contains(., ' + '"'+ dayReturn + '"' + ')]');
     return this;
   }
 };
@@ -60,17 +72,18 @@ const searchResult = {
         .click('@searchBtn')
         .waitForElementVisible('@resultPage', 3000)
         .waitForElementVisible('@resultContainer', 3000)
-        .waitForElementVisible('@resultCoast', 11000);
+        .waitForElementVisible('@resultCoast', 20000);
       return this;
   }
 };
 
 module.exports = {
   url: 'http://www.expedia.com',
-  commands: [enterSite, searchFlights, searchDate, setAdult, searchResult, flyFromAirport],
+  commands: [enterSite, searchFlightsFrom, flyFromAirport, searchFlightsTo, flyToAirport, searchDate,  setAdult, searchResult],
   elements: {
     btnFlights: {
-      selector: '//button[@id="tab-flight-tab-hp"]'
+      selector: '//button[@id="tab-flight-tab-hp"]',
+      locateStrategy: 'xpath'
     },
     flyFrom: {
       selector: '//input[@id="flight-origin-hp-flight"]',
@@ -80,36 +93,16 @@ module.exports = {
       selector: '//div[@class="autocomplete-dropdown"]',
       locateStrategy: 'xpath'
     },
-    airportSelect: {
-      selector: `//div[@class="display-group-results"]//div[contains(., "Heathrow")]`,
-      locateStrategy: 'xpath'
-    },
     flyTo: {
       selector: '//input[@id="flight-destination-hp-flight"]',
-      locateStrategy: 'xpath'
-    },
-    popupTo: {
-      selector: '//div[@class="cols-nested"]/div[2]//div[@class="autocomplete-dropdown"]',
-      locateStrategy: 'xpath'
-    },
-    citySelect: {
-      selector: '//div[@class="cols-nested"]/div[2]//div[@class="autocomplete-dropdown"]//li[1]',
       locateStrategy: 'xpath'
     },
     flyDeparting: {
       selector: '//input[@id="flight-departing-hp-flight"]',
       locateStrategy: 'xpath'
     },
-    dateDeparting: {
-      selector: '//div[@id="flight-departing-wrapper-hp-flight"]//div[@class="datepicker-dropdown"]//tbody[@class="datepicker-cal-dates"]//tr[4]//td[1]',
-      locateStrategy: 'xpath'
-    },
     flyReturning: {
       selector: '//input[@id="flight-returning-hp-flight"]',
-      locateStrategy: 'xpath'
-    },
-    dateReturning: {
-      selector: '//div[@id="flight-returning-wrapper-hp-flight"]//div[@class="datepicker-dropdown"]//tbody[@class="datepicker-cal-dates"]//tr[5]//td[1]',
       locateStrategy: 'xpath'
     },
     adult: {
@@ -140,10 +133,6 @@ module.exports = {
         selector: '//div[@id="filter-container"]//fieldset[@id="airlines"]',
         locateStrategy: 'xpath'
     }
-
-
-
-
   }
 
 };
